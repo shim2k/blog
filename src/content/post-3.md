@@ -1,5 +1,5 @@
 ---
-title: "Code Example"
+title: "Using OffScreenCanvas with React and THREE.js"
 date: "2019-06-06"
 draft: false
 path: "/blog/code-example"
