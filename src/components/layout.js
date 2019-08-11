@@ -24,6 +24,13 @@ const GatsbyLink = styled.a`
   margin-left: 5px;
 `
 
+const Email = styled.div`
+  display: flex;
+  margin-top: 5px;
+  color: gray;
+  justify-content: center;
+`
+
 const Footer = styled.footer`
   display: flex;
   justify-content: center;
@@ -46,10 +53,10 @@ const Layout = ({ children }) => (
         <Content>
           <main>{children}</main>
           <Footer>
-            © {new Date().getFullYear()}, Built with
-            {` `}
-            <GatsbyLink href="https://www.gatsbyjs.org">Gatsby</GatsbyLink>
+            <GatsbyLink href="https://twitter.com/shim2k">@shim2k</GatsbyLink>
+            <GatsbyLink href="https://github.com/Shim2k">github.com/shim2k</GatsbyLink>
           </Footer>
+          <Email>shim2k@gmail.com</Email>
         </Content>
       </>
     )}

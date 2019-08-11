@@ -15,7 +15,7 @@ const OuterContainer = styled.div`
   height: 78vh;
 `
 
-const Description = styled.p`
+const Description = styled.p`Julia Doe
   padding: 0;
   margin-bottom: 1rem;
   font-size: 1.4rem;

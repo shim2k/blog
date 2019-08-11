@@ -32,6 +32,9 @@ const MarkerHeader = styled.h3`
   
 `
 
+const Projects = styled.div`
+`
+
 const ReadingTime = styled.h5`
   display: inline;
   color: #606060;
@@ -43,25 +46,10 @@ const IndexPage = ({ data }) => {
     <Layout>
       <SEO title="Blog" />
       <Content>
-        <h1>Blog</h1>
-        {data.allMarkdownRemark.edges.map(({ node }) => (
-          <div key={node.id}>
-            <Link
-              to={node.frontmatter.path}
-              css={css`
-                text-decoration: none;
-                color: inherit;
-              `}
-            >
-              <MarkerHeader>{node.frontmatter.title} </MarkerHeader>
-              <div>
-                <ArticleDate>{node.frontmatter.date}</ArticleDate>
-                <ReadingTime> - {node.fields.readingTime.text}</ReadingTime>
-              </div>
-              <p>{node.excerpt}</p>
-            </Link>
-          </div>
-        ))}
+        <h1>Projects</h1>
+        <Projects>
+          Under construction
+        </Projects>
       </Content>
     </Layout>
   )

@@ -1,18 +1,23 @@
 ---
-title: "Using OffScreenCanvas with React and THREE.js"
-date: "2019-06-06"
+title: "OffscreenCanvas with React, Three.js and Web Workers"
+date: "2019-08-12"
 draft: false
-path: "/blog/code-example"
+path: "/blog/offscreen-canvas-react-three-js-web-workers"
 ---
 
-## An Code example with PrismJS
-Gatsby-Starter-Julia uses the Atom Editor Theme.
+Three.js gives us the ability to draw complex WebGL scenes relatively easily.
+Unfortunately, rendering your scenes may take a few moments and to make things worse, it blocks the UI thread which will freeze your page and make it unresponsive while doing so.
 
-```js
-console.log("Hello World");
-```
+There are multiple ways to integrate Three.js into our React app but we will choose the straightforward approach for this demonstration.
 
-## Default NodeJS server
+
+
+# Web Workers
+
+Web Workers are a way for web applications to run scripts in background threads. 
+The worker thread can perform tasks without interfering with the user interface.
+
+We can move the rendering process of Three.js to Web Workers, thus keeping the UI thread clean and responsive.
 
 ```js
 const http = require('http');
