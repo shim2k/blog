@@ -56,7 +56,6 @@ const Layout = ({ children }) => (
             <GatsbyLink href="https://twitter.com/shim2k">@shim2k</GatsbyLink>
             <GatsbyLink href="https://github.com/Shim2k">github.com/shim2k</GatsbyLink>
           </Footer>
-          <Email>shim2k@gmail.com</Email>
         </Content>
       </>
     )}
