@@ -42,7 +42,7 @@ const MarkdownContent = styled.div`
     right: -0.1px;
     bottom: 0;
     transition: top 0.1s ease-in-out;
-    background-color: rgba(255, 250, 150, 0.8);
+    background-color: #e4f0ff;
   }
 
   a:hover::after {

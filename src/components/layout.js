@@ -20,7 +20,7 @@ const Content = styled.div`
   padding-top: 0;
 `
 
-const GatsbyLink = styled.a`
+const Link = styled.a`
   margin-left: 5px;
 `
 
@@ -34,6 +34,7 @@ const Email = styled.div`
 const Footer = styled.footer`
   display: flex;
   justify-content: center;
+  margin-bottom: 15px;
 `
 
 const Layout = ({ children }) => (
@@ -54,10 +55,10 @@ const Layout = ({ children }) => (
           <main>{children}</main>
         </Content>
         <Footer>
-          <GatsbyLink href="https://twitter.com/shim2k">@shim2k</GatsbyLink>
-          <GatsbyLink href="https://github.com/Shim2k">github.com/shim2k</GatsbyLink>
+          <Link>shim2k@gmail.com</Link>
+          <Link href="https://github.com/shim2k">GitHub</Link>
+          <Link href="https://twitter.com/shim2k">@shim2k</Link>
         </Footer>
-        <Email>shim2k@gmail.com</Email>
       </>
     )}
   />
