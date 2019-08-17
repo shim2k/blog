@@ -29,9 +29,21 @@ const Link = styled.a`
 
 const Email = styled.div`
   display: flex;
+  position: relative;
   color: gray;
   justify-content: center;
+  align-items: center;
   border: 0;
+  margin-top: 5px;
+  font-size: 22px;
+  font-weight: 300;
+  color: black;
+`
+
+const EmailCopied = styled.div`
+  font-size: 15px;
+  display: flex;
+  justify-content: center;
 `
 
 const Footer = styled.footer`
@@ -94,8 +106,8 @@ const Layout = ({ children }) => {
               <Link href="https://github.com/shim2k"><FaGithub/></Link>
               <Link href="https://twitter.com/shim2k"><FaTwitter/></Link>
             </FooterIcons>
-            {isEmailClicked ?
-              <Email onClick={copyEmail} ref={emailRef}>{email} {didCopyEmail ? " Copied!" : null}</Email> : null}
+            {isEmailClicked ? <Email onClick={copyEmail} ref={emailRef}>{email}</Email> : null}
+            {isEmailClicked && didCopyEmail ? <EmailCopied>Copied to clipboard!</EmailCopied> : null}
           </Footer>
         </>
       )}
