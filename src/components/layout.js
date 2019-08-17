@@ -6,12 +6,11 @@
  */
 
 
-
-import React from "react"
+import React, { useState, useRef } from "react"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 import styled from "@emotion/styled"
-import { FaGithub, FaTwitter } from 'react-icons/fa';
+import { FaGithub, FaTwitter, FaEnvelope } from "react-icons/fa"
 
 import Header from "./header"
 import "./layout.css"
@@ -24,18 +23,52 @@ const Content = styled.div`
 `
 
 const Link = styled.a`
-  margin-left: 5px;
+  margin-right: 10px;
+  margin-left: 10px;
+`
+
+const Email = styled.div`
+  display: flex;
+  color: gray;
+  justify-content: center;
+  border: 0;
 `
 
 const Footer = styled.footer`
   display: flex;
+  flex-direction: column;
   justify-content: center;
   margin-bottom: 15px;
 `
 
-const Layout = ({ children }) => (
-  <StaticQuery
-    query={graphql`
+const FooterIcons = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 30px;
+`
+
+const Layout = ({ children }) => {
+
+  let [isEmailClicked, clickEmail] = useState(false)
+  let [didCopyEmail, setCopied] = useState(false)
+  let emailRef = useRef(null)
+
+  let email = `shim2k@gmail.com`
+
+  function copyEmail() {
+    let range = document.createRange()
+    range.selectNode(emailRef.current)
+    window.getSelection().removeAllRanges() // clear current selection
+    window.getSelection().addRange(range) // to select text
+    document.execCommand("copy")
+    window.getSelection().removeAllRanges()// to deselect
+    setCopied(true)
+  }
+
+  return (
+    <StaticQuery
+      query={graphql`
       query SiteTitleQuery {
         site {
           siteMetadata {
@@ -44,21 +77,31 @@ const Layout = ({ children }) => (
         }
       }
     `}
-    render={data => (
-      <>
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <Content>
-          <main>{children}</main>
-        </Content>
-        <Footer>
-          <Link>shim2k@gmail.com</Link>
-          <Link href="https://github.com/shim2k"><FaGithub /></Link>
-          <Link href="https://twitter.com/shim2k"><FaTwitter /></Link>
-        </Footer>
-      </>
-    )}
-  />
-)
+      render={data => (
+        <>
+          <Header siteTitle={data.site.siteMetadata.title}/>
+          <Content>
+            <main>{children}</main>
+          </Content>
+          <Footer>
+            <FooterIcons>
+              <Link onClick={() => clickEmail(prev => {
+                if (!prev) {
+                  setCopied(false)
+                }
+                return !prev
+              })}><FaEnvelope/></Link>
+              <Link href="https://github.com/shim2k"><FaGithub/></Link>
+              <Link href="https://twitter.com/shim2k"><FaTwitter/></Link>
+            </FooterIcons>
+            {isEmailClicked ?
+              <Email onClick={copyEmail} ref={emailRef}>{email} {didCopyEmail ? " Copied!" : null}</Email> : null}
+          </Footer>
+        </>
+      )}
+    />
+  )
+}
 
 Layout.propTypes = {
   children: PropTypes.node.isRequired,
