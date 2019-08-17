@@ -47,7 +47,7 @@ self.onmessage = function (e) {
     handler(message);
 };
 
-function run () {
+function run (message) {
     ...
     self.postMessage({type: 'run', data: results})
 }
@@ -64,7 +64,7 @@ import Worker from './threejs.worker';
 let worker = new Worker();
 
 worker.postMessage(
-  {type: 'run'}
+  {type: 'run', data: []}
 );
 
 ```
@@ -83,7 +83,6 @@ Here is how the `OffscreenCanvas` interface is utilized:
 
 ```js
 let canvas = document.getElementById('canvas');
-
 let offscreen = canvas.transferControlToOffscreen()
 ```
 > We invoke the transferControlToOffscreen method on `canvas` which returns an `OffscreenCanvas` object and assigns it to `offscreen`.
@@ -238,7 +237,7 @@ function create3DCylider () {
 
 function run (message) {
   
-  let { canvas } = self;
+  let { canvas } = message;
   
   let cylider = self.create3DCylider()
   let scene = new THREE.Scene();

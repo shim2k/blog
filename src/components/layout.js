@@ -5,10 +5,13 @@
  * See: https://www.gatsbyjs.org/docs/static-query/
  */
 
+
+
 import React from "react"
 import PropTypes from "prop-types"
 import { StaticQuery, graphql } from "gatsby"
 import styled from "@emotion/styled"
+import { FaGithub, FaTwitter } from 'react-icons/fa';
 
 import Header from "./header"
 import "./layout.css"
@@ -22,13 +25,6 @@ const Content = styled.div`
 
 const Link = styled.a`
   margin-left: 5px;
-`
-
-const Email = styled.div`
-  display: flex;
-  margin-top: 5px;
-  color: gray;
-  justify-content: center;
 `
 
 const Footer = styled.footer`
@@ -56,8 +52,8 @@ const Layout = ({ children }) => (
         </Content>
         <Footer>
           <Link>shim2k@gmail.com</Link>
-          <Link href="https://github.com/shim2k">GitHub</Link>
-          <Link href="https://twitter.com/shim2k">@shim2k</Link>
+          <Link href="https://github.com/shim2k"><FaGithub /></Link>
+          <Link href="https://twitter.com/shim2k"><FaTwitter /></Link>
         </Footer>
       </>
     )}
