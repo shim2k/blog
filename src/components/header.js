@@ -49,11 +49,6 @@ const SiteHeader = styled.header`
 const Header = ({ siteTitle }) => (
   <SiteHeader>
     <Content>
-      <p>
-        <HomeLink to="/">{siteTitle}</HomeLink>
-        <NavLink to="/blog">Blog</NavLink>
-        <NavLink to="/projects">Projects</NavLink>
-      </p>
     </Content>
   </SiteHeader>
 )
