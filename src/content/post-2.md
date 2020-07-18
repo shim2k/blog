@@ -17,7 +17,8 @@ Instead of arbitrary separation of components into stateful/stateless or contain
 
 ## Named Effects
 
-One thing that I noticed about using hooks is that the useEffect hook seems to have too much responsibilities.
+One thing that I noticed about using hooks is that the useEffect hook seems to have too much responsibility. When registered with no dependency array, it is called every render, like componentDidUpdate. When registered with an empty array, it acts like a combination of componentDidMount and componentWillUnmount. When registered with an array of state values, it will render whenever one of those values changes.
+ 
 A complex component can often have multiple useEffect lined-up one after another and this can really compromise the readability of the code, because there is no easy way to know how a particular useEffect hook affects the code, without going over the variables that the dependency array contains, and the perticular combination of values of those variables that intrigues a change (the if condition that is usually found inside the body of a useEffect hook).
 
 In order to address this problem I created a small wrapper around useEffect so it can be easier to understand what a particular effect is trying to achieve.
